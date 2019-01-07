@@ -1,0 +1,56 @@
+<div class="vertical-center">
+
+  <div class="login-form">
+    <div class="back-button">
+      <a routerLink="/login">
+        &#x2bc7; login
+      </a>
+    </div>
+
+
+    <h1 class="text-center">Registration</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="formSent()">
+      <div class="form-row">
+        <label for="username">Username:</label>
+        <input type="text" id="username" formControlName="username"
+               [ngClass]="{'is-invalid': usernameInput.invalid}"
+               class="form-control"/>
+        <div *ngIf="usernameInput.errors?.required" class="error-message">
+          The username is required.
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password"
+               [ngClass]="{'is-invalid': passwordInput.invalid}"
+               class="form-control"/>
+        <div *ngIf="passwordInput.errors?.required" class="error-message">
+          The password is required.
+        </div>
+        <div *ngIf="passwordInput.hasError(PasswordStrengthValidator.NAME)" class="error-message">
+          Password is too weak. {{passwordErrors}}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="password_repeat">Password:</label>
+        <input type="password" id="password_repeat" formControlName="password_repeat"
+               [ngClass]="{'is-invalid': passwordRepeatInput.invalid || registerForm.hasError(MatchValidator.NAME)}"
+               class="form-control"/>
+        <div *ngIf="registerForm.errors?.match" class="error-message">
+          Passwords do not match.
+        </div>
+      </div>
+
+      <div class="form-row pt-3">
+        <input type="submit" value="Register" [disabled]="registerForm.invalid"
+               class="form-control btn btn-success"/>
+      </div>
+    </form>
+
+
+  </div>
+
+</div>
+

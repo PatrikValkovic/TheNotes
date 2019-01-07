@@ -1,0 +1,35 @@
+<div class="vertical-center">
+
+  <div class="login-form">
+    <h1 class="text-center">Login</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="formSended()">
+      <div class="form-row">
+        <label for="username">Username:</label>
+        <input type="text" id="username" formControlName="username"
+               class="form-control"/>
+      </div>
+
+      <div class="form-row">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password"
+               class="form-control"/>
+      </div>
+
+      <div class="form-row pt-3">
+        <input type="submit" value="Login"
+               class="form-control btn btn-success"/>
+      </div>
+
+      <div class="form-row pt-3">
+        <a routerLink="/register"
+           class="btn btn-light form-control">
+          Register
+        </a>
+      </div>
+    </form>
+
+
+  </div>
+
+</div>
+
