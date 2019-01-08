@@ -1,6 +1,6 @@
 <div class="vertical-center">
 
-  <div class="login-form">
+  <div class="dotted-box">
     <div class="back-button">
       <a routerLink="/login">
         &#x2bc7; login
@@ -11,21 +11,27 @@
     <h1 class="text-center">Registration</h1>
     <form [formGroup]="registerForm" (ngSubmit)="formSent()">
       <div class="form-row">
-        <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username"
-               [ngClass]="{'is-invalid': usernameInput.invalid}"
+        <label for="email">Email:</label>
+        <input type="text" id="email" formControlName="email"
+               [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}"
                class="form-control"/>
-        <div *ngIf="usernameInput.errors?.required" class="error-message">
-          The username is required.
+        <div *ngIf="emailInput.hasError('required')" class="error-message">
+          The email is required.
+        </div>
+        <div *ngIf="emailInput.hasError('email')" class="error-message">
+          The input is not valid email.
+        </div>
+        <div *ngIf="emailInput.hasError('in-use')" class="error-message">
+          The email is already used by other account.
         </div>
       </div>
 
       <div class="form-row">
         <label for="password">Password:</label>
         <input type="password" id="password" formControlName="password"
-               [ngClass]="{'is-invalid': passwordInput.invalid}"
+               [ngClass]="{'is-invalid': passwordInput.invalid && passwordInput.touched}"
                class="form-control"/>
-        <div *ngIf="passwordInput.errors?.required" class="error-message">
+        <div *ngIf="passwordInput.hasError('required')" class="error-message">
           The password is required.
         </div>
         <div *ngIf="passwordInput.hasError(PasswordStrengthValidator.NAME)" class="error-message">
@@ -36,16 +42,24 @@
       <div class="form-row">
         <label for="password_repeat">Password:</label>
         <input type="password" id="password_repeat" formControlName="password_repeat"
-               [ngClass]="{'is-invalid': passwordRepeatInput.invalid || registerForm.hasError(MatchValidator.NAME)}"
+               [ngClass]="{'is-invalid': (passwordRepeatInput.invalid || registerForm.hasError(MatchValidator.NAME)) && passwordRepeatInput.touched}"
                class="form-control"/>
-        <div *ngIf="registerForm.errors?.match" class="error-message">
+        <div *ngIf="registerForm.hasError('match')" class="error-message">
           Passwords do not match.
         </div>
       </div>
 
       <div class="form-row pt-3">
-        <input type="submit" value="Register" [disabled]="registerForm.invalid"
-               class="form-control btn btn-success"/>
+        <div *ngIf="registerForm.hasError('not-allowed')" class="error-message">
+          The operation is not allowed.
+        </div>
+      </div>
+
+      <div class="form-row pt-3">
+        <app-loading [loading]="loading">
+          <input type="submit" value="Register" [disabled]="registerForm.invalid"
+                 class="form-control btn btn-success"/>
+        </app-loading>
       </div>
     </form>
 

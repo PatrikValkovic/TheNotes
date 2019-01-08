@@ -6,12 +6,18 @@ import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
 import {routes} from './routes';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoadingComponent} from './components/loading/loading.component';
+import {LoaderComponent} from './components/loading/loader.component';
+import {RegistrationConfirmationComponent} from './components/registration-confirmation/registration-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    LoadingComponent,
+    LoaderComponent,
+    RegistrationConfirmationComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export class MatchValidator {
       if (firstControl && secondControl && firstControl.value === secondControl.value) {
         return null;
       }
-      return {match: true};
+      return {[MatchValidator.NAME]: true};
     };
   }
 }

@@ -4,7 +4,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   constructor() {
     this.loginForm = new FormGroup({
-      username: new FormControl(),
+      email: new FormControl(),
       password: new FormControl()
     });
   }

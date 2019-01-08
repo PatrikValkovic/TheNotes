@@ -22,7 +22,7 @@ export class PasswordStrengthValidator {
         return null;
       }
 
-      return {passwordStrength: true};
+      return {[PasswordStrengthValidator.NAME]: true};
     };
   }
 }

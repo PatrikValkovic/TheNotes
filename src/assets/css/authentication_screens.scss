@@ -6,9 +6,10 @@
   align-items: center;
 }
 
-.login-form {
+.dotted-box {
   max-width: 20em;
   width: 100%;
+  min-height: 40vh;
   border-radius: 4px;
   border: dotted 2px var(--secondary);
   padding: 3em;
