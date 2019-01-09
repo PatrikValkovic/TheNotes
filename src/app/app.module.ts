@@ -10,6 +10,7 @@ import {LoadingComponent} from './components/loading/loading.component';
 import {LoaderComponent} from './components/loading/loader.component';
 import {RegistrationConfirmationComponent} from './components/registration-confirmation/registration-confirmation.component';
 import {EmailVerificationComponent} from './components/email-verification/email-verification.component';
+import {MainApplicationComponent} from './components/main-application/main-application.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {EmailVerificationComponent} from './components/email-verification/email-
     LoadingComponent,
     LoaderComponent,
     RegistrationConfirmationComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    MainApplicationComponent
   ],
   imports: [
     BrowserModule,

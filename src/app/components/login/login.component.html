@@ -2,22 +2,32 @@
 
   <div class="dotted-box">
     <h1 class="text-center">Login</h1>
-    <form [formGroup]="loginForm" (ngSubmit)="formSended()">
+    <form [formGroup]="loginForm" (ngSubmit)="sendForm()">
       <div class="form-row">
-        <label for="username">Username:</label>
-        <input type="text" id="username" formControlName="username"
+        <label [htmlFor]="EMAIL_INPUT">Email:</label>
+        <input type="email" [id]="EMAIL_INPUT" [formControlName]="EMAIL_INPUT"
+               [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}"
                class="form-control"/>
       </div>
 
       <div class="form-row">
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password"
+        <label [htmlFor]="PASSWORD_INPUT">Password:</label>
+        <input type="password" [id]="PASSWORD_INPUT" [formControlName]="PASSWORD_INPUT"
+               [ngClass]="{'is-invalid': passwordInput.invalid && passwordInput.touched}"
                class="form-control"/>
+      </div>
+
+      <div class="error-message" *ngIf="errors.length > 0">
+        <p *ngFor="let error of errors">
+          {{error}}
+        </p>
       </div>
 
       <div class="form-row pt-3">
-        <input type="submit" value="Login"
-               class="form-control btn btn-success"/>
+        <app-loading [loading]="loading">
+          <input type="submit" value="Login"
+                 class="form-control btn btn-success"/>
+        </app-loading>
       </div>
 
       <div class="form-row pt-3">

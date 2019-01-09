@@ -2,8 +2,11 @@ import {RegisterComponent} from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
 import {RegistrationConfirmationComponent} from './components/registration-confirmation/registration-confirmation.component';
 import {EmailVerificationComponent} from './components/email-verification/email-verification.component';
+import {MainApplicationComponent} from './components/main-application/main-application.component';
 
 export const routes = [
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+
   {
     path: 'register',
     children: [
@@ -14,5 +17,12 @@ export const routes = [
   },
 
   {path: 'login', component: LoginComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+
+  {
+    path: 'app',
+    children: [
+      {path: '', component: MainApplicationComponent},
+    ]
+  },
+
 ];

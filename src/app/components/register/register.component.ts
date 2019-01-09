@@ -13,8 +13,25 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class RegisterComponent {
 
+  static EMAIL_INPUT = 'email';
+  static PASSWORD_INPUT = 'password';
+  static PASSWORD_REPEAT_INPUT = 'password_repeat';
+
+  public get EMAIL_INPUT(): string {
+    return RegisterComponent.EMAIL_INPUT;
+  }
+
+  public get PASSWORD_INPUT(): string {
+    return RegisterComponent.PASSWORD_INPUT;
+  }
+
+  public get PASSWORD_REPEAT_INPUT(): string {
+    return RegisterComponent.PASSWORD_REPEAT_INPUT;
+  }
+
   public MatchValidator: typeof MatchValidator = MatchValidator;
   PasswordStrengthValidator: typeof PasswordStrengthValidator = PasswordStrengthValidator;
+
   private loading: boolean;
 
   get passwordErrors(): string {
@@ -31,32 +48,31 @@ export class RegisterComponent {
               private router: Router,
               private route: ActivatedRoute) {
     this.registerForm = new FormGroup({
-      email: new FormControl('', [
+      [this.EMAIL_INPUT]: new FormControl('', [
         Validators.required,
         Validators.email,
       ]),
-      password: new FormControl('', [
+      [this.PASSWORD_INPUT]: new FormControl('', [
         Validators.required,
         passwordValidator.create(1),
       ]),
-      password_repeat: new FormControl('', Validators.required),
-    }, [MatchValidator.create('password', 'password_repeat')]);
+      [this.PASSWORD_REPEAT_INPUT]: new FormControl('', Validators.required),
+    }, [MatchValidator.create(this.PASSWORD_INPUT, this.PASSWORD_REPEAT_INPUT)]);
   }
 
   get emailInput(): AbstractControl {
-    return this.registerForm.get('email');
+    return this.registerForm.get(this.EMAIL_INPUT);
   }
 
   get passwordInput(): AbstractControl {
-    return this.registerForm.get('password');
+    return this.registerForm.get(this.PASSWORD_INPUT);
   }
 
   get passwordRepeatInput(): AbstractControl {
-    return this.registerForm.get('password_repeat');
+    return this.registerForm.get(this.PASSWORD_REPEAT_INPUT);
   }
 
   async formSent() {
-    console.log('Going to sent registration', this.registerForm.value);
     const {email, password} = this.registerForm.value;
     this.loading = true;
     try {
