@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {AccountManagementService} from '../../services/account-management.service';
+import {Router} from '@angular/router';
+import {DatabaseManagementService} from '../../services/database-management.service';
 
 @Component({
   selector: 'app-main-application',
@@ -7,10 +10,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MainApplicationComponent implements OnInit {
 
-  constructor() {
+  constructor(private account: AccountManagementService,
+              private router: Router,
+              private database: DatabaseManagementService) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if (!await this.account.isUserLogIn()) {
+      return this.router.navigate(['/login']);
+    }
+
+    await this.database.checkUsersDocument();
+
+    console.log('notes', await this.database.getNotes());
   }
 
 }
