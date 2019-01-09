@@ -1,0 +1,21 @@
+<div class="vertical-center">
+  <div class="dotted-box">
+
+    <h1 class="text-center">Email verification</h1>
+    <app-loading [loading]="verificating" class="flex-column">
+      <div class="pt-3" *ngIf="!error">
+        <p>Your email was rerified, you can log in.</p>
+      </div>
+
+      <div class="error-message">
+        {{error}}
+      </div>
+
+      <a class="pt-3 font-weight-bold"
+         routerLink="/login">
+        &#x2bc7; login
+      </a>
+    </app-loading>
+  </div>
+</div>
+

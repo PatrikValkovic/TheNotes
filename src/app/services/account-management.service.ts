@@ -15,4 +15,8 @@ export class AccountManagementService {
     await user.user.sendEmailVerification();
     return user;
   }
+
+  async verifyEmail(actionCode: string): Promise<void> {
+    return this.firebase.getAuth().applyActionCode(actionCode);
+  }
 }

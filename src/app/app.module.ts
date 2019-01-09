@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoadingComponent} from './components/loading/loading.component';
 import {LoaderComponent} from './components/loading/loader.component';
 import {RegistrationConfirmationComponent} from './components/registration-confirmation/registration-confirmation.component';
+import {EmailVerificationComponent} from './components/email-verification/email-verification.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {RegistrationConfirmationComponent} from './components/registration-confi
     LoginComponent,
     LoadingComponent,
     LoaderComponent,
-    RegistrationConfirmationComponent
+    RegistrationConfirmationComponent,
+    EmailVerificationComponent
   ],
   imports: [
     BrowserModule,
