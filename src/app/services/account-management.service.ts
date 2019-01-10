@@ -39,7 +39,7 @@ export class AccountManagementService {
   async getUser(): Promise<User | null> {
     if (!this.firebase.getAuth().currentUser) {
       const waitPromose = new Promise((resolve) => {
-        setTimeout(resolve, 500);
+        setTimeout(resolve, 600);
       });
       const userPromise = new Promise((resolve) => {
         this.firebase.getAuth().onAuthStateChanged(resolve);
@@ -52,5 +52,9 @@ export class AccountManagementService {
   async getUserUid(): Promise<string> {
     const user = await this.getUser();
     return user ? user.uid : null;
+  }
+
+  logout(): Promise<void> {
+    return this.firebase.getAuth().signOut();
   }
 }

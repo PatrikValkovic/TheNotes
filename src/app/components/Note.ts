@@ -11,4 +11,12 @@ export class Note {
               public content: string,
               public tags: Array<string>) {
   }
+
+  toObject() {
+    return {
+      heading: this.heading,
+      content: this.content,
+      tags: this.tags
+    };
+  }
 }

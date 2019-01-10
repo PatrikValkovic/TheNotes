@@ -2,9 +2,9 @@
   <div class="dotted-box">
 
     <h1 class="text-center">Email verification</h1>
-    <app-loading [loading]="verificating" class="flex-column">
+    <app-loading [loading]="verification_in_progress" class="flex-column">
       <div class="pt-3" *ngIf="!error">
-        <p>Your email was rerified, you can log in.</p>
+        <p>Your email has been verified, you can log in.</p>
       </div>
 
       <div class="error-message">

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AccountManagementService} from '../../services/account-management.service';
 import {Router} from '@angular/router';
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   static EMAIL_INPUT = 'email';
   static PASSWORD_INPUT = 'password';
@@ -60,5 +60,14 @@ export class LoginComponent {
     } finally {
       this.loading = false;
     }
+  }
+
+  ngOnInit() {
+    this.account.isUserLogIn()
+      .then(val => {
+        if (val) {
+          this.router.navigate(['/app']);
+        }
+      });
   }
 }

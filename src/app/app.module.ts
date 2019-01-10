@@ -11,6 +11,9 @@ import {LoaderComponent} from './components/loading/loader.component';
 import {RegistrationConfirmationComponent} from './components/registration-confirmation/registration-confirmation.component';
 import {EmailVerificationComponent} from './components/email-verification/email-verification.component';
 import {MainApplicationComponent} from './components/main-application/main-application.component';
+import {LeftPanelComponent} from './components/left-panel/left-panel.component';
+import {RightPanelComponent} from './components/right-panel/right-panel.component';
+import {TopPanelComponent} from './components/top-panel/top-panel.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import {MainApplicationComponent} from './components/main-application/main-appli
     LoaderComponent,
     RegistrationConfirmationComponent,
     EmailVerificationComponent,
-    MainApplicationComponent
+    MainApplicationComponent,
+    LeftPanelComponent,
+    RightPanelComponent,
+    TopPanelComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,36 @@ export const environment = {
     storageBucket: 'thenotes-7b9ac.appspot.com',
     messagingSenderId: '302375682314'
   },
+
+  default_notes: [
+    {
+      heading: 'My first note',
+      content: 'Notes that are generated',
+      tags: ['TheNote', 'Startup'],
+    },
+    {
+      heading: 'Second note in the app',
+      content: 'Try all the features that the app provide for you',
+      tags: ['Startup', 'Features'],
+    },
+    {
+      heading: 'Note creation',
+      content: 'You can create new note by clicking the + button',
+      tags: ['Startup', 'tutorial']
+    },
+    {
+      heading: 'Modify notes',
+      content: 'You can modify the content of the notes by clicking on them',
+      tags: ['Startup', 'tutorial']
+    },
+    {
+      heading: 'Tags',
+      content: `You can assign tags to notes in the edit view, try it by adding tags to this note.
+        You can later filter notes based on the tag.`,
+      tags: []
+    }
+  ],
+
 };
 
 /*
