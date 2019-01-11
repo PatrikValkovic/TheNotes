@@ -1,4 +1,14 @@
+:host {
+  transition: width 2s ease-in-out;
+  flex-shrink: 0;
+}
+
 .left-panel {
   height: 100%;
+  min-width: 10em;
   background-color: red; /* TODO delete */
+}
+
+.tags-list {
+  margin: 0;
 }

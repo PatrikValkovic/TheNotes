@@ -1,7 +1,11 @@
-.main-application-component {
+:host {
+  display: block;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
+}
+
+.main-application-component {
+  display: block;
+  min-height: 100%;
 }
 
 .splitter {

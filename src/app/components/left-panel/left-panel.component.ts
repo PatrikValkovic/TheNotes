@@ -1,21 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {DatabaseManagementService} from '../../services/database-management.service';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {NotesRepositoryService} from '../../services/notes-repository.service';
 
 @Component({
   selector: 'app-left-panel',
   templateUrl: './left-panel.component.html',
-  styleUrls: ['./left-panel.component.scss']
+  styleUrls: ['./left-panel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LeftPanelComponent implements OnInit {
 
-  constructor(private database: DatabaseManagementService) {
+  constructor(private notesRepo: NotesRepositoryService,
+              private cdr: ChangeDetectorRef) {
   }
 
   tags: string[] = [];
 
   ngOnInit() {
-    this.database.getTags()
-      .then(tags => this.tags = tags);
+    this.notesRepo.notesChanged.subscribe(async () => {
+      this.tags = await this.notesRepo.getTags();
+      this.cdr.markForCheck();
+    });
   }
 
 }

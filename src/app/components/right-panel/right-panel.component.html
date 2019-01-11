@@ -1,12 +1,17 @@
 <div class="right-panel">
+  <app-loading [loading]="notes.length === 0" style="flex-direction: column">
 
-  <div *ngFor="let note of notes">
-    <h3>{{note.content}}</h3>
-    <p>{{note.content}}</p>
-    <ul>
-      <li *ngFor="let tag of note.tags">
-        {{tag}}
-      </li>
-    </ul>
-  </div>
+
+    <div *ngFor="let note of notes">
+      <h3>{{note.content}}</h3>
+      <p>{{note.content}}</p>
+      <ul>
+        <li *ngFor="let tag of note.tags">
+          {{tag}}
+        </li>
+      </ul>
+    </div>
+
+
+  </app-loading>
 </div>
