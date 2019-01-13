@@ -29,10 +29,6 @@ export class MainApplicationComponent implements OnInit {
   }
 
   get leftPanelWidth(): number {
-    if (!this.showLeftPanel) {
-      return 0;
-    }
-
     if (!this.componentWidth || !this.settings.loaded()) {
       return 10;
     }

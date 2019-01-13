@@ -14,6 +14,7 @@ import {MainApplicationComponent} from './components/main-application/main-appli
 import {LeftPanelComponent} from './components/left-panel/left-panel.component';
 import {RightPanelComponent} from './components/right-panel/right-panel.component';
 import {TopPanelComponent} from './components/top-panel/top-panel.component';
+import {TagComponent} from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {TopPanelComponent} from './components/top-panel/top-panel.component';
     MainApplicationComponent,
     LeftPanelComponent,
     RightPanelComponent,
-    TopPanelComponent
+    TopPanelComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,

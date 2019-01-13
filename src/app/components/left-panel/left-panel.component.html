@@ -1,10 +1,12 @@
 <div class="left-panel">
 
-  <ul class="tags-list">
-    <li *ngFor="let tag of tags">
-      {{tag}}
-    </li>
-  </ul>
+  <div class="tags-heading">
+    <h2>Tags</h2>
+  </div>
+
+  <div class="tags-list">
+    <app-tag (click)="tagSelected(tag)" *ngFor="let tag of tags" [tag]="tag"></app-tag>
+  </div>
 
 
 </div>

@@ -1,3 +1,9 @@
+:host {
+  --delimiting-line: rgba(100, 100, 100, 0.3);
+}
+
+
 .app-root {
   height: 100%;
 }
+

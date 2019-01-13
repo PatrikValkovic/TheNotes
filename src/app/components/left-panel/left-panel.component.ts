@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NotesRepositoryService} from '../../services/notes-repository.service';
+import {FilteringService} from '../../services/filtering.service';
 
 @Component({
   selector: 'app-left-panel',
@@ -10,6 +11,7 @@ import {NotesRepositoryService} from '../../services/notes-repository.service';
 export class LeftPanelComponent implements OnInit {
 
   constructor(private notesRepo: NotesRepositoryService,
+              private filtering: FilteringService,
               private cdr: ChangeDetectorRef) {
   }
 
@@ -22,4 +24,7 @@ export class LeftPanelComponent implements OnInit {
     });
   }
 
+  tagSelected(tag: string) {
+    this.filtering.toggleFilterTag(tag);
+  }
 }

@@ -15,3 +15,8 @@
   flex-grow: 1;
   display: flex;
 }
+
+app-left-panel.hidden {
+  transform: scaleX(0);
+  width: 0 !important;
+}

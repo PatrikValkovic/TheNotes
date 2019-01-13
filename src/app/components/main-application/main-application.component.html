@@ -3,7 +3,7 @@
   <app-top-panel (toggleMenu)="toggleMenu()"></app-top-panel>
 
   <div class="splitter">
-    <app-left-panel [style.width.em]="leftPanelWidth"></app-left-panel>
+    <app-left-panel [ngClass]="{'hidden': !showLeftPanel}" [style.width.em]="leftPanelWidth"></app-left-panel>
     <app-right-panel></app-right-panel>
   </div>
 </div>
