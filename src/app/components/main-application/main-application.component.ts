@@ -12,6 +12,7 @@ import {SettingRepositoryService} from '../../services/setting-repository.servic
 export class MainApplicationComponent implements OnInit {
 
   private componentWidth: number;
+  private showLeftPanel = true;
 
   constructor(private account: AccountManagementService,
               private router: Router,
@@ -28,6 +29,10 @@ export class MainApplicationComponent implements OnInit {
   }
 
   get leftPanelWidth(): number {
+    if (!this.showLeftPanel) {
+      return 0;
+    }
+
     if (!this.componentWidth || !this.settings.loaded()) {
       return 10;
     }
@@ -50,4 +55,7 @@ export class MainApplicationComponent implements OnInit {
     this.componentWidth = this.convert.pxToEm(offsetWidth);
   }
 
+  toggleMenu() {
+    this.showLeftPanel = !this.showLeftPanel;
+  }
 }

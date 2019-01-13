@@ -7,6 +7,25 @@
   display: flex;
 }
 
+
+.menu-container {
+  display: flex;
+  align-items: center;
+
+  & > div {
+    border-radius: 999px;
+    background-color: rgba(100, 100, 100, 0.4);
+    height: fit-content;
+    margin: 0 1em;
+  }
+
+  span {
+    font-size: 1.3em;
+    padding: 10px 12px 15px;
+  }
+}
+
+
 .filtering-input {
 
   display: flex;

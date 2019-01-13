@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AccountManagementService} from '../../services/account-management.service';
 import {Router} from '@angular/router';
 import {FilteringService} from '../../services/filtering.service';
@@ -9,6 +9,8 @@ import {FilteringService} from '../../services/filtering.service';
   styleUrls: ['./top-panel.component.scss']
 })
 export class TopPanelComponent implements OnInit {
+
+  @Output() toggleMenu = new EventEmitter();
 
   constructor(private router: Router,
               private account: AccountManagementService,
@@ -26,5 +28,9 @@ export class TopPanelComponent implements OnInit {
   searchingChange(ev) {
     const content: string = ev.srcElement.value;
     this.filter.filterTextChange(content);
+  }
+
+  menuButtonClick() {
+    this.toggleMenu.emit();
   }
 }
