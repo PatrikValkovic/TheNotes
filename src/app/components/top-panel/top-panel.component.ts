@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountManagementService} from '../../services/account-management.service';
 import {Router} from '@angular/router';
+import {FilteringService} from '../../services/filtering.service';
 
 @Component({
   selector: 'app-top-panel',
@@ -10,7 +11,8 @@ import {Router} from '@angular/router';
 export class TopPanelComponent implements OnInit {
 
   constructor(private router: Router,
-              private account: AccountManagementService) {
+              private account: AccountManagementService,
+              private filter: FilteringService) {
   }
 
   ngOnInit() {
@@ -18,6 +20,11 @@ export class TopPanelComponent implements OnInit {
 
   async logout() {
     await this.account.logout();
-    this.router.navigate(['/login']);
+    await this.router.navigate(['/login']);
+  }
+
+  searchingChange(ev) {
+    const content: string = ev.srcElement.value;
+    this.filter.filterTextChange(content);
   }
 }

@@ -6,3 +6,24 @@
   background-color: yellow; /* TODO delete */
   display: flex;
 }
+
+.filtering-input {
+
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 50vw;
+  }
+}
+
+
+.logout-container {
+  display: flex;
+  align-items: center;
+
+  a {
+    display: block;
+    padding-bottom: 5px;
+  }
+}

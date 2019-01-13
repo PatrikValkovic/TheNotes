@@ -1,10 +1,16 @@
 <div class="top-panel">
 
-  <div class="ml-auto mr-auto">
+  <div class="mr-auto">
     <h1 class="text-center">The notes</h1>
   </div>
 
-  <div class="ml-auto mr-0 p-2">
+  <div class="mr-auto ml-auto filtering-input">
+    <input type="text" placeholder="Filter..."
+           class="form-control form-control-lg"
+           (keyup)="searchingChange($event)" />
+  </div>
+
+  <div class="ml-auto mr-0 p-2 logout-container">
     <a (click)="logout()" href="#">
       Logout
     </a>

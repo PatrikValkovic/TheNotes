@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Note} from '../Note';
-import {NotesRepositoryService} from '../../services/notes-repository.service';
+import {FilteringService} from '../../services/filtering.service';
 
 @Component({
   selector: 'app-right-panel',
@@ -11,14 +11,16 @@ import {NotesRepositoryService} from '../../services/notes-repository.service';
 export class RightPanelComponent implements OnInit {
 
   notes: Note[] = [];
+  loading = true;
 
-  constructor(private notesRepo: NotesRepositoryService,
+  constructor(private filtering: FilteringService,
               private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.notesRepo.notesChanged.subscribe(notes => {
+    this.filtering.notesChanged.subscribe(notes => {
       this.notes = notes;
+      this.loading = false;
       this.cdr.markForCheck();
     });
   }
