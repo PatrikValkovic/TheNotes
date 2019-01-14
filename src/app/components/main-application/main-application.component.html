@@ -4,6 +4,6 @@
 
   <div class="splitter">
     <app-left-panel [ngClass]="{'hidden': !showLeftPanel}" [style.width.em]="leftPanelWidth"></app-left-panel>
-    <app-right-panel></app-right-panel>
+    <app-right-panel [columns]="numberOfNoteColumns"></app-right-panel>
   </div>
 </div>

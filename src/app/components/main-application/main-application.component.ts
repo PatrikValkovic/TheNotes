@@ -44,6 +44,17 @@ export class MainApplicationComponent implements OnInit {
     return currentWidth - totalWidth;
   }
 
+  get numberOfNoteColumns(): number {
+    if (!this.componentWidth || !this.settings.loaded()) {
+      return 3;
+    }
+
+    const currenetWidth = this.componentWidth;
+    const leftWidth = this.leftPanelWidth;
+    const noteWidth = this.settings.getMargin() + this.settings.getNoteWidth();
+    return Math.floor((currenetWidth - leftWidth) / noteWidth);
+  }
+
 
   @HostListener('window:resize')
   componentResize() {

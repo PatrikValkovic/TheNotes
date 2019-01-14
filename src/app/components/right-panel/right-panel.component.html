@@ -3,7 +3,7 @@
 
     <div [style.padding.em]="containerPadding" class="notes-container">
       <ng-container *ngFor="let note of notes">
-        <app-note [note]="note"></app-note>
+        <app-note (loaded)="noteLoaded($event)" (unloaded)="noteUnloaded($event)" [note]="note"></app-note>
       </ng-container>
     </div>
 
