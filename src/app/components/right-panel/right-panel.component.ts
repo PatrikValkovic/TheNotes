@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Note} from '../Note';
 import {FilteringService} from '../../services/filtering.service';
+import {SettingRepositoryService} from '../../services/setting-repository.service';
 
 @Component({
   selector: 'app-right-panel',
@@ -14,7 +15,12 @@ export class RightPanelComponent implements OnInit {
   loading = true;
 
   constructor(private filtering: FilteringService,
-              private cdr: ChangeDetectorRef) {
+              private cdr: ChangeDetectorRef,
+              private settings: SettingRepositoryService) {
+  }
+
+  get containerPadding(): number {
+    return this.settings.getMargin() / 2;
   }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 :host {
   --delimiting-line: rgba(100, 100, 100, 0.3);
+  --notes-background: rgb(252, 250, 239);
 }
 
 

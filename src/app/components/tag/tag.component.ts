@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {FilteringService} from '../../services/filtering.service';
 
 @Component({
@@ -11,9 +11,11 @@ export class TagComponent implements OnInit {
   @Input() tag: string;
   selected = false;
 
-  constructor(private filter: FilteringService) {
+  constructor(private filter: FilteringService,
+              private cdr: ChangeDetectorRef) {
     this.filter.tagsSelectionChanged.subscribe(() => {
       this.selected = this.filter.isTagSelected(this.tag);
+      this.cdr.markForCheck();
     });
   }
 

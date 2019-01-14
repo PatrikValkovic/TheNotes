@@ -14,7 +14,7 @@ export class SettingRepositoryService {
   }
 
   getNoteWidth(): number {
-    return 8;
+    return 16;
   }
 
   getMargin(): number {

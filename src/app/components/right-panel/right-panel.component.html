@@ -1,15 +1,10 @@
 <div class="right-panel">
   <app-loading [loading]="loading" style="flex-direction: column; justify-content: flex-start;">
 
-
-    <div *ngFor="let note of notes">
-      <h3>{{note.content}}</h3>
-      <p>{{note.content}}</p>
-      <ul>
-        <li *ngFor="let tag of note.tags">
-          {{tag}}
-        </li>
-      </ul>
+    <div [style.padding.em]="containerPadding" class="notes-container">
+      <ng-container *ngFor="let note of notes">
+        <app-note [note]="note"></app-note>
+      </ng-container>
     </div>
 
 

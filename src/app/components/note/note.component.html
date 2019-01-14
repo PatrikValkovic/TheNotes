@@ -1,0 +1,14 @@
+<div [style.margin.em]="margin"
+     [style.width.em]="width"
+     class="single-note">
+  <h4>{{note.heading}}</h4>
+  <p>{{note.content}}</p>
+
+  <ul>
+    <ng-container *ngFor="let tag of note.tags">
+      <li>
+        <app-tag (click)="tagSelected(tag)" [tag]="tag"></app-tag>
+      </li>
+    </ng-container>
+  </ul>
+</div>

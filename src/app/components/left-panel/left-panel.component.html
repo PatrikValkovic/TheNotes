@@ -5,7 +5,9 @@
   </div>
 
   <div class="tags-list">
-    <app-tag (click)="tagSelected(tag)" *ngFor="let tag of tags" [tag]="tag"></app-tag>
+    <div *ngFor="let tag of tags" class="mb-3">
+      <app-tag (click)="tagSelected(tag)" [tag]="tag"></app-tag>
+    </div>
   </div>
 
 
