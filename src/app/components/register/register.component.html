@@ -12,6 +12,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="formSent()">
       <div class="form-row">
         <label [htmlFor]="EMAIL_INPUT">Email:</label>
+        <!--suppress HtmlFormInputWithoutLabel -->
         <input type="email" [id]="EMAIL_INPUT" [formControlName]="EMAIL_INPUT"
                [ngClass]="{'is-invalid': emailInput.invalid && emailInput.touched}"
                class="form-control"/>
@@ -28,6 +29,7 @@
 
       <div class="form-row">
         <label [htmlFor]="PASSWORD_INPUT">Password:</label>
+        <!--suppress HtmlFormInputWithoutLabel -->
         <input type="password" [id]="PASSWORD_INPUT" [formControlName]="PASSWORD_INPUT"
                [ngClass]="{'is-invalid': passwordInput.invalid && passwordInput.touched}"
                class="form-control"/>
@@ -41,6 +43,7 @@
 
       <div class="form-row">
         <label [htmlFor]="PASSWORD_REPEAT_INPUT">Password:</label>
+        <!--suppress HtmlFormInputWithoutLabel -->
         <input type="password" [id]="PASSWORD_REPEAT_INPUT" [formControlName]="PASSWORD_REPEAT_INPUT"
                [ngClass]="{'is-invalid': (passwordRepeatInput.invalid || registerForm.hasError(MatchValidator.NAME)) && passwordRepeatInput.touched}"
                class="form-control"/>

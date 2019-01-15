@@ -15,8 +15,10 @@ export class NotesRepositoryService {
   }
 
   constructor(private database: DatabaseManagementService) {
-    this.getNotes();
-    // TODO catch
+    this.getNotes()
+      .catch(reason => {
+        // TODO handle
+      });
   }
 
   async setNotes(notes: Note[]) {

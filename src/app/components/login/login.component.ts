@@ -64,10 +64,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.account.isUserLogIn()
-      .then(val => {
+      .then(async val => {
         if (val) {
-          this.router.navigate(['/app']);
+          await this.router.navigate(['/app']);
         }
+      })
+      .catch((reason) => {
+        // TODO handle
       });
   }
 }

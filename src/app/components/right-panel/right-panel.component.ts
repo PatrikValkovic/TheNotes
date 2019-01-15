@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Note} from '../Note';
 import {FilteringService} from '../../services/filtering.service';
 import {SettingRepositoryService} from '../../services/setting-repository.service';
@@ -18,7 +18,7 @@ interface Point {
   styleUrls: ['./right-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RightPanelComponent implements OnInit {
+export class RightPanelComponent implements OnInit, OnChanges {
 
   @Input() columns: number;
 
@@ -45,6 +45,14 @@ export class RightPanelComponent implements OnInit {
       this.dirtyNotes = true;
       this.cdr.markForCheck();
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const prop = changes.columns;
+    if (prop.currentValue !== prop.previousValue) {
+      this.dirtyNotes = true;
+      this.positionElements();
+    }
   }
 
   noteLoaded($event: NoteComponent) {
@@ -81,11 +89,11 @@ export class RightPanelComponent implements OnInit {
       // position notes
       const componentsAsArray = Array.from(this.loadedNotes);
       for (const note of this.notes) {
-        const elems: NoteComponent[] = componentsAsArray.filter(x => x.note === note);
-        if (elems.length === 0 || elems[0].offsetHeight === 0) {
+        const elements: NoteComponent[] = componentsAsArray.filter(x => x.note === note);
+        if (elements.length === 0 || elements[0].offsetHeight === 0) {
           return this.positionElements;
         }
-        const elem = elems[0];
+        const elem = elements[0];
         const position = queue.pop();
 
         elem.leftPosition = position.x;

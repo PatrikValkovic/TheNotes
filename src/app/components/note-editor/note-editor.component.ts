@@ -81,8 +81,8 @@ export class NoteEditorComponent implements OnInit {
     this.backend.closeEditor();
   }
 
-  @HostListener('document:keydown.escape', ['$event'])
-  onKeydownHandler($event: KeyboardEvent) {
+  @HostListener('document:keydown.escape')
+  onKeydownHandler() {
     if (this.showPlus) {
       this.backend.closeEditor();
     } else {
@@ -90,13 +90,19 @@ export class NoteEditorComponent implements OnInit {
     }
   }
 
-  async successAction() {
+  successAction() {
     this.note.heading = this.headingInput.value;
     this.note.content = this.contentInput.value;
-    await this.backend.propagateSuccessAction(this.note);
+    this.backend.propagateSuccessAction(this.note)
+      .catch((reason => {
+        // TODO handle
+      }));
   }
 
-  async negativeAction() {
-    await this.backend.propagateNegativeAction();
+  negativeAction() {
+    this.backend.propagateNegativeAction()
+      .catch((reason => {
+        // TODO handle
+      }));
   }
 }

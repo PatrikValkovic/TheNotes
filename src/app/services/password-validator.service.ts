@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+// noinspection SpellCheckingInspection
 import * as zxcvbn from 'zxcvbn';
 
 @Injectable({

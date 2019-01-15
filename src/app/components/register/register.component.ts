@@ -32,7 +32,7 @@ export class RegisterComponent {
   public MatchValidator: typeof MatchValidator = MatchValidator;
   PasswordStrengthValidator: typeof PasswordStrengthValidator = PasswordStrengthValidator;
 
-  private loading: boolean;
+  loading: boolean;
 
   get passwordErrors(): string {
     const errors = this.passwordService.feedbackWarning(this.passwordInput.value);

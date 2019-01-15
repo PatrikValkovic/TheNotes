@@ -29,6 +29,7 @@
         </div>
 
         <div *ngIf="!showPlus" class="btn btn-dark tag-adding">
+          <!--suppress HtmlFormInputWithoutLabel -->
           <input class="hide" type="text"/>
           <app-tag-selector (closeAction)="tagDialogClose()"
                             (tagSelected)="tagDialogSelected($event)"

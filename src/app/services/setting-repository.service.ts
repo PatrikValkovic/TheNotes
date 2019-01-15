@@ -7,6 +7,7 @@ import {DatabaseManagementService} from './database-management.service';
 export class SettingRepositoryService {
 
   constructor(private database: DatabaseManagementService) {
+    // TODO implemented loading
   }
 
   loaded(): boolean {

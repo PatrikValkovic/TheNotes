@@ -1,4 +1,4 @@
-import {Component, Input, ElementRef, EventEmitter, Output, HostBinding, AfterViewInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {Component, Input, ElementRef, EventEmitter, Output, HostBinding, AfterViewInit, OnDestroy} from '@angular/core';
 import {Note} from '../Note';
 import {SettingRepositoryService} from '../../services/setting-repository.service';
 import {FilteringService} from '../../services/filtering.service';

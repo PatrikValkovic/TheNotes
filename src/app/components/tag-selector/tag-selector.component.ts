@@ -44,7 +44,7 @@ export class TagSelectorComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.notes.notesChanged.subscribe(async n => {
+    this.notes.notesChanged.subscribe(async () => {
       this.allTags = await this.notes.getTags();
       this.cdr.markForCheck();
     });

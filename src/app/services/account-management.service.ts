@@ -38,13 +38,13 @@ export class AccountManagementService {
 
   async getUser(): Promise<User | null> {
     if (!this.firebase.getAuth().currentUser) {
-      const waitPromose = new Promise((resolve) => {
+      const waitPromise = new Promise((resolve) => {
         setTimeout(resolve, 1000);
       });
       const userPromise = new Promise((resolve) => {
         this.firebase.getAuth().onAuthStateChanged(resolve);
       });
-      await Promise.race([waitPromose, userPromise]);
+      await Promise.race([waitPromise, userPromise]);
     }
     return this.firebase.getAuth().currentUser;
   }
