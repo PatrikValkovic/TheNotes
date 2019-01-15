@@ -5,6 +5,7 @@ import {SettingRepositoryService} from '../../services/setting-repository.servic
 import {NoteComponent} from '../note/note.component';
 import TinyQueue from 'tinyqueue';
 import {ConvertService} from '../../services/convert.service';
+import {NoteEditorBackendService} from '../../services/note-editor-backend.service';
 
 interface Point {
   x: number;
@@ -29,7 +30,8 @@ export class RightPanelComponent implements OnInit {
   constructor(private filtering: FilteringService,
               private cdr: ChangeDetectorRef,
               private settings: SettingRepositoryService,
-              private convert: ConvertService) {
+              private convert: ConvertService,
+              private noteEditor: NoteEditorBackendService) {
   }
 
   get containerPadding(): number {
@@ -103,4 +105,7 @@ export class RightPanelComponent implements OnInit {
   }
 
 
+  modifyNote(index: number) {
+    this.noteEditor.modifyNote(this.notes[index], index);
+  }
 }

@@ -1,6 +1,6 @@
 <ng-container *ngIf="displayEditor">
-  <div (click)="clickedOnTheNoteEditor()" class="note-editor-wrapper">
-    <div class="note-editor-container container">
+  <div class="note-editor-wrapper">
+    <div (click)="clickedOnTheNoteEditor($event)" class="note-editor-container container">
 
       <div class="row">
         <label for="headingInput">Heading</label>

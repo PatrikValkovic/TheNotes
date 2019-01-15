@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit} from '@angular/core';
 import {Note} from '../Note';
 import {FormControl} from '@angular/forms';
 import {NoteEditorBackendService} from '../../services/note-editor-backend.service';
@@ -70,8 +70,24 @@ export class NoteEditorComponent implements OnInit {
     this.tagDialogClose();
   }
 
-  clickedOnTheNoteEditor() {
+  clickedOnTheNoteEditor($event: MouseEvent) {
     this.tagDialogClose();
+    $event.stopPropagation();
+  }
+
+  @HostListener('click')
+  clickedOutsideOfTheNoteEditor() {
+    this.tagDialogClose();
+    this.backend.closeEditor();
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onKeydownHandler($event: KeyboardEvent) {
+    if (this.showPlus) {
+      this.backend.closeEditor();
+    } else {
+      this.tagDialogClose();
+    }
   }
 
   async successAction() {
@@ -80,7 +96,7 @@ export class NoteEditorComponent implements OnInit {
     await this.backend.propagateSuccessAction(this.note);
   }
 
-  negativeAction() {
-
+  async negativeAction() {
+    await this.backend.propagateNegativeAction();
   }
 }

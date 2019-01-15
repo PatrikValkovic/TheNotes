@@ -51,7 +51,15 @@ export class NotesRepositoryService {
     return this.notes;
   }
 
-  deleteNote() {
+  async deleteNote(index: number) {
+    const cpNotes = [...this.notes];
+    cpNotes.splice(index, 1);
+    await this.setNotes(cpNotes);
+  }
 
+  async modifyNote(note: Note, index: number) {
+    const cpNotes = [...this.notes];
+    cpNotes.splice(index, 1, note);
+    await this.setNotes(cpNotes);
   }
 }

@@ -10,6 +10,7 @@ export class NoteEditorBackendService {
 
   note: Subject<Note> = new BehaviorSubject(null);
   private creating: boolean;
+  private index: number;
 
   constructor(private notes: NotesRepositoryService) {
   }
@@ -22,26 +23,34 @@ export class NoteEditorBackendService {
     return this.creating ? 'Cancel' : 'Delete';
   }
 
+  public closeEditor() {
+    this.note.next(null);
+  }
+
   public createNote() {
     this.creating = true;
     this.note.next(new Note('', '', []));
   }
 
-  public modifyNote(note: Note) {
+  public modifyNote(note: Note, index: number) {
     this.creating = false;
+    this.index = index;
     this.note.next(note);
   }
 
   public async propagateSuccessAction(note: Note) {
-    await this.notes.addNote(note);
+    if (this.creating) {
+      await this.notes.addNote(note);
+    } else {
+      await this.notes.modifyNote(note, this.index);
+    }
     this.note.next(null);
   }
 
-  public propagateNegativeAction() {
-    if (this.creating) {
-      this.note.next(null);
-    } else {
-      this.notes.deleteNote();
+  public async propagateNegativeAction() {
+    if (!this.creating) {
+      await this.notes.deleteNote(this.index);
     }
+    this.note.next(null);
   }
 }

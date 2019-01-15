@@ -2,8 +2,11 @@
   <app-loading [loading]="loading" style="flex-direction: column; justify-content: flex-start;">
 
     <div [style.padding.em]="containerPadding" class="notes-container">
-      <ng-container *ngFor="let note of notes">
-        <app-note (loaded)="noteLoaded($event)" (unloaded)="noteUnloaded($event)" [note]="note"></app-note>
+      <ng-container *ngFor="let note of notes; let i = index">
+        <app-note (click)="modifyNote(i)"
+                  (loaded)="noteLoaded($event)"
+                  (unloaded)="noteUnloaded($event)"
+                  [note]="note"></app-note>
       </ng-container>
     </div>
 
