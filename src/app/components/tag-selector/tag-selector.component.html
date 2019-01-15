@@ -1,0 +1,10 @@
+<div (click)="clickedOnTagDiv($event)" class="position-absolute">
+  <input #tagAddingInput (keyup)="typedToSearchTag($event)" [value]="valueOfTheInput" type="text"/>
+  <ul class="available-tags">
+    <ng-container *ngFor="let atag of availableTags; let i = index">
+      <li (click)="tagClicked(i)" (mouseover)="hoverMouse(i)" [ngClass]="{targeted: selectedIndex == i}">
+        {{atag}}
+      </li>
+    </ng-container>
+  </ul>
+</div>

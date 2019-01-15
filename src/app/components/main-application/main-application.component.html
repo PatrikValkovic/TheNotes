@@ -3,6 +3,7 @@
   <app-top-panel (toggleMenu)="toggleMenu()"></app-top-panel>
 
   <div class="splitter">
+    <app-note-editor></app-note-editor>
     <app-left-panel [ngClass]="{'hidden': !showLeftPanel}" [style.width.em]="leftPanelWidth"></app-left-panel>
     <app-right-panel [columns]="numberOfNoteColumns"></app-right-panel>
   </div>

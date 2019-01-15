@@ -1,0 +1,53 @@
+<ng-container *ngIf="displayEditor">
+  <div (click)="clickedOnTheNoteEditor()" class="note-editor-wrapper">
+    <div class="note-editor-container container">
+
+      <div class="row">
+        <label for="headingInput">Heading</label>
+        <input [formControl]="headingInput" class="form-control form-control-lg"
+               id="headingInput"
+               placeholder="Heading of the note..."
+               type="text"/>
+      </div>
+
+      <div class="row mt-2">
+        <label for="contentInput">Content</label>
+        <textarea [formControl]="contentInput"
+                  class="form-control"
+                  id="contentInput"
+                  placeholder="Content of the note">
+      </textarea>
+      </div>
+
+      <div class="row mt-2 tags-container">
+        <ng-container *ngFor="let tag of note.tags || []">
+          <app-tag (click)="removeTag(tag)" [isSelected]="true" [tag]="tag"></app-tag>
+        </ng-container>
+
+        <div (click)="showTagDialog($event)" *ngIf="showPlus" class="btn btn-success plus-button">
+          <span class="oi oi-plus"></span>
+        </div>
+
+        <div *ngIf="!showPlus" class="btn btn-dark tag-adding">
+          <input class="hide" type="text"/>
+          <app-tag-selector (closeAction)="tagDialogClose()"
+                            (tagSelected)="tagDialogSelected($event)"
+                            [excludedTags]="note.tags || []"></app-tag-selector>
+        </div>
+
+
+        <div class="action-buttons-container ml-auto">
+          <div (click)="successAction()" class="btn btn-success">
+            {{positiveText}}
+          </div>
+          <div (click)="negativeAction()" class="btn btn-danger">
+            {{negativeText}}
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</ng-container>

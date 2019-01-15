@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AccountManagementService} from '../../services/account-management.service';
 import {Router} from '@angular/router';
 import {FilteringService} from '../../services/filtering.service';
+import {NoteEditorBackendService} from '../../services/note-editor-backend.service';
 
 @Component({
   selector: 'app-top-panel',
@@ -14,7 +15,8 @@ export class TopPanelComponent implements OnInit {
 
   constructor(private router: Router,
               private account: AccountManagementService,
-              private filter: FilteringService) {
+              private filter: FilteringService,
+              private editor: NoteEditorBackendService) {
   }
 
   ngOnInit() {
@@ -32,5 +34,9 @@ export class TopPanelComponent implements OnInit {
 
   menuButtonClick() {
     this.toggleMenu.emit();
+  }
+
+  showCreateNote() {
+    this.editor.createNote();
   }
 }

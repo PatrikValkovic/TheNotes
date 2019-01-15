@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Note} from '../components/Note';
-import {Subject} from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import {DatabaseManagementService} from './database-management.service';
 
 @Injectable({
@@ -8,16 +8,14 @@ import {DatabaseManagementService} from './database-management.service';
 })
 export class NotesRepositoryService {
   private notes: Array<Note> = null;
-  private notesSubject: Subject<Note[]> = new Subject();
+  private notesSubject: Subject<Note[]> = new BehaviorSubject(null);
 
   public get notesChanged(): Subject<Note[]> {
     return this.notesSubject;
   }
 
   constructor(private database: DatabaseManagementService) {
-    this.notesSubject.subscribe(n => this.notes = n);
-    this.getNotes()
-      .then(n => this.setNotes(n));
+    this.getNotes();
     // TODO catch
   }
 
@@ -28,6 +26,7 @@ export class NotesRepositoryService {
       notes: notes.map(n => n.toObject())
     });
 
+    this.notes = notes;
     this.notesChanged.next(this.notes);
   }
 
@@ -43,10 +42,16 @@ export class NotesRepositoryService {
   }
 
   async getNotes(): Promise<Note[]> {
+    const doc = await this.database.getDoc();
     if (!this.notes) {
-      const doc = await this.database.getDoc();
-      this.notes = Array.from(Note.createFromDatabase(doc.data().notes));
+      const notes = Array.from(Note.createFromDatabase(doc.data().notes));
+      this.notes = notes;
+      this.notesChanged.next(notes);
     }
     return this.notes;
+  }
+
+  deleteNote() {
+
   }
 }

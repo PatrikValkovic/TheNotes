@@ -16,6 +16,8 @@ import {RightPanelComponent} from './components/right-panel/right-panel.componen
 import {TopPanelComponent} from './components/top-panel/top-panel.component';
 import {TagComponent} from './components/tag/tag.component';
 import {NoteComponent} from './components/note/note.component';
+import {NoteEditorComponent} from './components/note-editor/note-editor.component';
+import {TagSelectorComponent} from './components/tag-selector/tag-selector.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {NoteComponent} from './components/note/note.component';
     RightPanelComponent,
     TopPanelComponent,
     TagComponent,
-    NoteComponent
+    NoteComponent,
+    NoteEditorComponent,
+    TagSelectorComponent
   ],
   imports: [
     BrowserModule,

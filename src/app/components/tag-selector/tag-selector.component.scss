@@ -1,0 +1,19 @@
+:host {
+  padding: .375rem .75rem;
+  display: block;
+}
+
+.available-tags {
+  background-color: white;
+  color: black;
+  list-style: none;
+  padding: 0.2em;
+
+  li {
+    display: block;
+  }
+
+  li.targeted {
+    background-color: var(--delimiting-line);
+  }
+}

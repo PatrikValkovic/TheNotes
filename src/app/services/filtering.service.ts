@@ -18,7 +18,7 @@ export class FilteringService {
 
   constructor(private notes: NotesRepositoryService) {
     this.notes.notesChanged.subscribe(n => {
-      this.allNotes = n;
+      this.allNotes = n || [];
       this.filterNotes();
     });
   }

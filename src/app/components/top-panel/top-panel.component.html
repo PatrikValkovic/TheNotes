@@ -14,6 +14,10 @@
     <input type="text" placeholder="Filter..."
            class="form-control form-control-lg"
            (keyup)="searchingChange($event)" />
+    <a (click)="showCreateNote()"
+       class="btn btn-warning btn-lg ml-2">
+      Create note
+    </a>
   </div>
 
   <div class="ml-auto mr-0 p-2 logout-container">
